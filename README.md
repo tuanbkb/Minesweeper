@@ -2,7 +2,9 @@
 
 ## Giới thiệu bản thân
 Họ và tên: Lương Ngọc Tuấn
+
 Mã Sinh Viên: 22021146
+
 Lớp: K67CC
 
 ## Bài tập cuối kì môn Lập trình nâng cao (INT2215)
@@ -28,7 +30,9 @@ Trò chơi được lấy ý tưởng và cảm hứng từ game Minesweeper v�
 #### Cách chơi
 
 Trò chơi bao gồm một bảng 20x20 ô, trong đó có một số ô có chứa bomb. Số lượng bomb tùy theo độ khó các bạn chọn. Nhiệm vụ của các bạn là tìm tất cả các ô chứa bomb để thắng trò chơi
+
 Để mở một ô trên bảng, các bạn nhấn chuột trái. Nếu ô đó không chứa bomb, một hoặc một số ô sẽ được mở ra, trong ô là số lượng bomb trong 8 ô xung quanh ô đó. Khi các bạn xác định được ô chứa bomb, nhấn chuột phải để đặt cờ đánh dấu ô đó chứa bomb.
+
 Trò chơi sẽ kết thúc khi bạn đặt cờ ở tất cả các ô chứa bomb hoặc khi bạn nhấn vào ô chứa bomb.
 
 #### Một số hình ảnh trong game
