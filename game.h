@@ -22,10 +22,14 @@ extern LButton gPlayButton;
 extern LButton gReplayButton;
 extern LButton gMenuButton;
 
+extern LTexture gClickToContinue;
+
 bool init();
 
 bool loadMedia();
 
 void close();
+
+void waitHalfSecond();
 
 #endif

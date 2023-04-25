@@ -19,6 +19,7 @@ const int BUTTON_HEIGHT = 100;
 enum GAME_STATE {
     MAIN_MENU,
     PLAYING,
+    REVEAL_BOMB,
     END_SCREEN,
 };
 
@@ -29,7 +30,7 @@ enum CELL_STATE {
 };
 
 enum BUTTON_STATE {
-    NORMAL,
+    NO_MOUSE_OVER,
     MOUSE_OVER,
 };
 

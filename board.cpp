@@ -76,6 +76,12 @@ bool Board::loadTexture() {
 }
 
 void Board::generateBoard() {
+    for (int i = 0; i < NUM_OF_ROW; i++) {
+        for (int j = 0; j < NUM_OF_COL; j++) {
+            gBoard[i][j] = 0;
+            gBoardShown[i][j] = 0;
+        }
+    }
     for (int i = 0; i < NUM_OF_BOMB; i++) {
         int x, y;
         do {
@@ -113,9 +119,6 @@ void Board::renderBoard() {
             }
             else if (gBoardShown[i][j] == SHOWN_CELL) {
                 switch(gBoard[i][j]) {
-                    case -1:
-                        gBomb.render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
-                        break;
                     case 0:
                         gNumber[0].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
                         break;
@@ -165,12 +168,63 @@ void Board::openCell(int row, int col) {
             if (col < 19 && row > 0 && gBoard[row - 1][col + 1] > 0) openCell(row - 1, col + 1);
             if (col < 19 && row < 19 && gBoard[row + 1][col + 1] > 0) openCell(row + 1, col + 1);
         }
+        else if (gBoard[row][col] == -1) bombIsActivated = true;
     }
 }
 
 void Board::placeFlag(int row, int col) {
-    if (gBoardShown[row][col] == 0) gBoardShown[row][col] = -1;
-    else if (gBoardShown[row][col] == -1) gBoardShown[row][col] = 0;
+    if (gBoardShown[row][col] == 0) {
+        gBoardShown[row][col] = -1;
+        if (gBoard[row][col] == -1) bombRemaining--;
+    }
+    else if (gBoardShown[row][col] == -1) {
+        gBoardShown[row][col] = 0;
+        if (gBoard[row][col] == -1) bombRemaining++;
+    }
+}
+
+void Board::revealBomb() {                          //Chinh la ham renderBoard nhung hien thi tat ca bomb
+    for (int i = 0; i < NUM_OF_ROW; i++) {
+        for (int j = 0; j < NUM_OF_COL; j++) {
+            if (gBoard[i][j] != -1) {
+                if (gBoardShown[i][j] == NORMAL) {
+                    gNormal.render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                }
+                else if (gBoardShown[i][j] == SHOWN_CELL) {
+                    switch(gBoard[i][j]) {
+                        case 0:
+                            gNumber[0].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 1:
+                            gNumber[1].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 2:
+                            gNumber[2].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 3:
+                            gNumber[3].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 4:
+                            gNumber[4].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 5:
+                            gNumber[5].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 6:
+                            gNumber[6].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 7:
+                            gNumber[7].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                        case 8:
+                            gNumber[8].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+                            break;
+                    }
+                }
+            }
+            else gBomb.render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
+        }
+    }
 }
 
 void Board::handleEvent(SDL_Event& e) {

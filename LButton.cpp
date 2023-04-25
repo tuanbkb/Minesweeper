@@ -9,7 +9,7 @@ LButton::LButton() {
 
 bool LButton::defineButton(string path1, string path2, int x, int y, int clickState) {
     bool success = true;
-    if (!BUTTON_TEXTURE[NORMAL].loadFromFile(path1)) {
+    if (!BUTTON_TEXTURE[NO_MOUSE_OVER].loadFromFile(path1)) {
         success = false;
     }
     if (!BUTTON_TEXTURE[MOUSE_OVER].loadFromFile(path2)) {
@@ -19,9 +19,10 @@ bool LButton::defineButton(string path1, string path2, int x, int y, int clickSt
     mPosX = x;
     mPosY = y;
 
-    currentButtonTexture = BUTTON_TEXTURE[NORMAL];
+    currentButtonTexture = BUTTON_TEXTURE[NO_MOUSE_OVER];
 
     clickPurpose = clickState;
+    return success;
 }
 
 void LButton::handleEvent(SDL_Event& e) {
@@ -34,7 +35,7 @@ void LButton::handleEvent(SDL_Event& e) {
             if (e.type == SDL_MOUSEMOTION) currentButtonTexture = BUTTON_TEXTURE[MOUSE_OVER];
             else if (e.type == SDL_MOUSEBUTTONDOWN) gameState = clickPurpose;
         }
-        else currentButtonTexture = BUTTON_TEXTURE[NORMAL];
+        else currentButtonTexture = BUTTON_TEXTURE[NO_MOUSE_OVER];
     }
 }
 
@@ -44,6 +45,6 @@ void LButton::render() {
 
 void LButton::free() {
     currentButtonTexture.free();
-    BUTTON_TEXTURE[NORMAL].free();
+    BUTTON_TEXTURE[NO_MOUSE_OVER].free();
     BUTTON_TEXTURE[MOUSE_OVER].free();
 }

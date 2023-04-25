@@ -23,6 +23,8 @@ class Board{
 
         void placeFlag(int row, int col);
 
+        void revealBomb();
+
         void handleEvent(SDL_Event& e);   
 
         int getBombRemaining();
