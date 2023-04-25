@@ -190,7 +190,7 @@ void Board::revealBomb() {                          //Chinh la ham renderBoard n
                 if (gBoardShown[i][j] == NORMAL) {
                     gNormal.render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
                 }
-                else if (gBoardShown[i][j] == SHOWN_CELL) {
+                else if (gBoardShown[i][j] == SHOWN_CELL || gBoardShown[i][j] == FLAG) {
                     switch(gBoard[i][j]) {
                         case 0:
                             gNumber[0].render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
