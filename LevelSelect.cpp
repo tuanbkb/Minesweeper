@@ -6,7 +6,7 @@ LevelSelect::LevelSelect() {
 
 bool LevelSelect::loadTexture() {
     bool success = true;
-    if (!mPlay.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - BUTTON_WIDTH)/2, 500, PLAYING)) success = false;
+    if (!mPlay.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - LONG_BUTTON_WIDTH)/2, 500, PLAYING)) success = false;
     if (!mLevelSelectTexture.loadFromFile("media/levelselect.png")) success = false;
     if (!mDifficulty[EASY].loadFromRenderText("Easy", TEXT_COLOR)) success = false;
     if (!mDifficulty[MEDIUM].loadFromRenderText("Medium", TEXT_COLOR)) success = false;

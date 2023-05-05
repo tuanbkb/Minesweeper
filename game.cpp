@@ -52,17 +52,17 @@ bool loadMedia() {
         success = false;
     }
 
-    if (!gPlayButton.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - BUTTON_HEIGHT)/2 + 1, LEVEL_SELECT)) {
+    if (!gPlayButton.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - LONG_BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - LONG_BUTTON_HEIGHT)/2 + 1, LEVEL_SELECT)) {
         cout << "Fail to define play button!" << endl;
         success = false;
     }
 
-    if (!gReplayButton.defineButton("media/replay.png", "media/replay1.png", (SCREEN_WIDTH - 3*BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - BUTTON_HEIGHT)/2 + 1, PLAYING)) {
+    if (!gReplayButton.defineButton("media/replay.png", "media/replay1.png", (SCREEN_WIDTH - 3*LONG_BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - LONG_BUTTON_HEIGHT)/2 + 1, PLAYING)) {
         cout << "Fail to define replay button!" << endl;
         success = false;
     }
 
-    if (!gMenuButton.defineButton("media/menu.png", "media/menu1.png", (SCREEN_WIDTH + BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - BUTTON_HEIGHT)/2 + 1, MAIN_MENU)) {
+    if (!gMenuButton.defineButton("media/menu.png", "media/menu1.png", (SCREEN_WIDTH + LONG_BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - LONG_BUTTON_HEIGHT)/2 + 1, MAIN_MENU)) {
         cout << "Fail to define menu button!" << endl;
         success = false;
     }

@@ -30,7 +30,7 @@ void LButton::handleEvent(SDL_Event& e) {
         int x, y;
         SDL_GetMouseState(&x, &y);
         bool inside = true;
-        if (x < mPosX || x > mPosX + BUTTON_WIDTH || y < mPosY || y > mPosY + BUTTON_HEIGHT) inside = false;
+        if (x < mPosX || x > mPosX + LONG_BUTTON_WIDTH || y < mPosY || y > mPosY + LONG_BUTTON_HEIGHT) inside = false;
         if (inside) {
             if (e.type == SDL_MOUSEMOTION) currentButtonTexture = BUTTON_TEXTURE[MOUSE_OVER];
             else if (e.type == SDL_MOUSEBUTTONDOWN) gameState = clickPurpose;

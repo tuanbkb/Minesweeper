@@ -61,7 +61,7 @@ void LTimer::render() {
     stringstream timeText;
     timeText << "Time: " << getTicks()/1000;
     if (mTimeTexture.loadFromRenderText(timeText.str().c_str(), TEXT_COLOR)) {
-        mTimeTexture.render((TOP_LEFT_BOARD_X - 1 - mTimeTexture.getWidth())/2, (SCREEN_HEIGHT - mTimeTexture.getHeight())/2);
+        mTimeTexture.render((TOP_LEFT_BOARD_X - 1 - mTimeTexture.getWidth())/2, 250);
     }
 }
 

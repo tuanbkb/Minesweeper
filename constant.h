@@ -17,8 +17,8 @@ const int BOARD_HEIGHT = 600;
 
 //const int NUM_OF_BOMB = 80;
 
-const int BUTTON_WIDTH = 200;
-const int BUTTON_HEIGHT = 100;
+const int LONG_BUTTON_WIDTH = 200;
+const int LONG_BUTTON_HEIGHT = 100;
 
 const SDL_Color TEXT_COLOR = {255 ,255 ,255};
 
