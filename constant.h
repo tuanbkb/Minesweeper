@@ -26,7 +26,7 @@ const int LEFT_BUTTON_POS_X = 440;
 const int LEFT_BUTTON_POS_Y = 330;
 const int RIGHT_BUTTON_POS_X = 790;
 const int RIGHT_BUTTON_POS_Y = 330;
-const int LEFT_RIGHT_BUTTON_SIZE = 55;
+const int SQUARE_BUTTON_SIZE = 55;
 
 enum GAME_STATE {
     MAIN_MENU,

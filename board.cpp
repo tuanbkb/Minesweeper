@@ -119,6 +119,7 @@ void Board::generateBoard() {
         }
     }
     bombRemaining = NUM_OF_BOMB;
+    flagPlaced = 0;
     bombIsActivated = false;
 }
 
@@ -164,6 +165,16 @@ void Board::renderBoard() {
             }
         }
     }
+    stringstream bombText;
+    bombText << "Bombs: ";
+    if (NUM_OF_BOMB - flagPlaced >= 0) bombText << NUM_OF_BOMB - flagPlaced;
+    else bombText << 0;
+    if (!gBombText.loadFromRenderText(bombText.str(), TEXT_COLOR)) {
+        cout << "Fail to load bomb remaining line!" << endl;
+    }
+    else {
+        gBombText.render((TOP_LEFT_BOARD_X - 1 - gBombText.getWidth())/2, 350);
+    }
 }
 
 void Board::openCell(int row, int col) {
@@ -186,10 +197,12 @@ void Board::openCell(int row, int col) {
 void Board::placeFlag(int row, int col) {
     if (gBoardShown[row][col] == 0) {
         gBoardShown[row][col] = -1;
+        flagPlaced++;
         if (gBoard[row][col] == -1) bombRemaining--;
     }
     else if (gBoardShown[row][col] == -1) {
         gBoardShown[row][col] = 0;
+        flagPlaced--;
         if (gBoard[row][col] == -1) bombRemaining++;
     }
 }
@@ -236,6 +249,16 @@ void Board::revealBomb() {                          //Chinh la ham renderBoard n
             else gBomb.render(TOP_LEFT_BOARD_X + CELL_SIZE*j, TOP_LEFT_BOARD_Y + CELL_SIZE*i);
         }
     }
+    stringstream bombText;
+    bombText << "Bombs: ";
+    if (NUM_OF_BOMB - flagPlaced >= 0) bombText << NUM_OF_BOMB - flagPlaced;
+    else bombText << 0;
+    if (!gBombText.loadFromRenderText(bombText.str(), TEXT_COLOR)) {
+        cout << "Fail to load bomb remaining line!" << endl;
+    }
+    else {
+        gBombText.render((TOP_LEFT_BOARD_X - 1 - gBombText.getWidth())/2, 350);
+    }
 }
 
 void Board::handleEvent(SDL_Event& e) {
@@ -268,4 +291,5 @@ void Board::free() {
         gNumber[i].free();
     }
     gFlag.free();
+    gBombText.free();
 }

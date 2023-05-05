@@ -6,6 +6,8 @@
 #include "LTexture.h"
 #include "LevelSelect.h"
 
+#include <sstream>
+
 extern LevelSelect gLevelSelect;
 
 class Board{
@@ -45,8 +47,10 @@ class Board{
         LTexture gBomb;
         LTexture gNumber[MAX_NUMBER_IN_CELL];
         LTexture gFlag;
+        LTexture gBombText;
 
         int bombRemaining;
+        int flagPlaced;
         bool bombIsActivated;
 };
 

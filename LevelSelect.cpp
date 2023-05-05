@@ -20,8 +20,8 @@ void LevelSelect::handleEvent(SDL_Event& e) {
         SDL_GetMouseState(&x, &y);
         bool insideLeft = true;
         bool insideRight = true;
-        if (x < LEFT_BUTTON_POS_X || x > LEFT_BUTTON_POS_X + LEFT_RIGHT_BUTTON_SIZE || y < LEFT_BUTTON_POS_Y || y > LEFT_BUTTON_POS_Y + LEFT_RIGHT_BUTTON_SIZE) insideLeft = false;
-        if (x < RIGHT_BUTTON_POS_X || x > RIGHT_BUTTON_POS_X + LEFT_RIGHT_BUTTON_SIZE || y < RIGHT_BUTTON_POS_Y || y > RIGHT_BUTTON_POS_Y + LEFT_RIGHT_BUTTON_SIZE) insideRight = false;
+        if (x < LEFT_BUTTON_POS_X || x > LEFT_BUTTON_POS_X + SQUARE_BUTTON_SIZE || y < LEFT_BUTTON_POS_Y || y > LEFT_BUTTON_POS_Y + SQUARE_BUTTON_SIZE) insideLeft = false;
+        if (x < RIGHT_BUTTON_POS_X || x > RIGHT_BUTTON_POS_X + SQUARE_BUTTON_SIZE || y < RIGHT_BUTTON_POS_Y || y > RIGHT_BUTTON_POS_Y + SQUARE_BUTTON_SIZE) insideRight = false;
         if (insideLeft) {
             mDifficultyShown--;
             if (mDifficultyShown < EASY) mDifficultyShown += 3;
@@ -36,7 +36,7 @@ void LevelSelect::handleEvent(SDL_Event& e) {
 
 void LevelSelect::renderLevelSelectScreen() {
     mLevelSelectTexture.render(0, 0);
-    mDifficulty[mDifficultyShown].render(LEFT_BUTTON_POS_X + LEFT_RIGHT_BUTTON_SIZE + (RIGHT_BUTTON_POS_X - LEFT_BUTTON_POS_X - LEFT_RIGHT_BUTTON_SIZE - mDifficulty[mDifficultyShown].getWidth())/2, LEFT_BUTTON_POS_Y + (LEFT_RIGHT_BUTTON_SIZE - mDifficulty[mDifficultyShown].getHeight())/2);
+    mDifficulty[mDifficultyShown].render(LEFT_BUTTON_POS_X + SQUARE_BUTTON_SIZE + (RIGHT_BUTTON_POS_X - LEFT_BUTTON_POS_X - SQUARE_BUTTON_SIZE - mDifficulty[mDifficultyShown].getWidth())/2, LEFT_BUTTON_POS_Y + (SQUARE_BUTTON_SIZE - mDifficulty[mDifficultyShown].getHeight())/2);
     mPlay.render();
 }
 
