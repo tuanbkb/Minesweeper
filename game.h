@@ -5,6 +5,7 @@
 #include "constant.h"
 #include "board.h"
 #include "LButton.h"
+#include "LevelSelect.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -22,6 +23,7 @@ extern LButton gPlayButton;
 extern LButton gReplayButton;
 extern LButton gMenuButton;
 
+extern LevelSelect gLevelSelect;
 extern LTexture gClickToContinue;
 
 bool init();

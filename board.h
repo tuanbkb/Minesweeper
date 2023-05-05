@@ -4,6 +4,9 @@
 #include "SDL.h"
 #include "constant.h"
 #include "LTexture.h"
+#include "LevelSelect.h"
+
+extern LevelSelect gLevelSelect;
 
 class Board{
     public:
@@ -35,6 +38,8 @@ class Board{
     private:
         int gBoard[NUM_OF_ROW][NUM_OF_COL];
         int gBoardShown[NUM_OF_ROW][NUM_OF_COL];
+
+        int NUM_OF_BOMB;
 
         LTexture gNormal;
         LTexture gBomb;

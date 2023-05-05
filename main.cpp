@@ -1,17 +1,22 @@
 #include "game.h"
 #include "board.h"
 #include "LButton.h"
+#include "LTimer.h"
+#include "LevelSelect.h"
 
 SDL_Window* gWindow = NULL;
 
 SDL_Renderer* gRenderer = NULL;
 
-TTF_Font* gFont;
+TTF_Font* gFont = NULL;
 
 Board gBoard;
 LButton gPlayButton;
 LButton gReplayButton;
 LButton gMenuButton;
+LButton gPauseButton;
+LTimer gTimer;
+LevelSelect gLevelSelect;
 
 LTexture gClickToContinue;
 
@@ -42,6 +47,9 @@ int main(int argc, char** args) {
                         case MAIN_MENU:
                             gPlayButton.handleEvent(e);
                             break;
+                        case LEVEL_SELECT:
+                            gLevelSelect.handleEvent(e);
+                            break;
                         case PLAYING:
                             gBoard.handleEvent(e);
                             break;
@@ -60,29 +68,38 @@ int main(int argc, char** args) {
                     case MAIN_MENU:
                         gPlayButton.render();
                         break;
+                    case LEVEL_SELECT:
+                        gLevelSelect.renderLevelSelectScreen();
+                        break;
                     case PLAYING:
                         if (!boardIsGenerated) {
                             gBoard.generateBoard();
                             boardIsGenerated = true;
                         }
                         else {
+                            if (!gTimer.isStarted()) gTimer.start();
                             gBoard.renderBoard();
+                            gTimer.render();
                         }
                         if (gBoard.getBombRemaining() == 0) {
                             waitHalfSecond();
                             gameState = END_SCREEN;
+                            gTimer.pause();
                             boardIsGenerated = false;
                         }
                         else if (gBoard.bombActivated()) {
                             gameState = REVEAL_BOMB;
+                            gTimer.pause();
                             boardIsGenerated = false;
                         }
                         break;
                     case REVEAL_BOMB:
                         gBoard.revealBomb();
                         gClickToContinue.render(SCREEN_WIDTH - gClickToContinue.getWidth(), (SCREEN_HEIGHT - gClickToContinue.getHeight())/2);
+                        gTimer.render();
                         break;
                     case END_SCREEN:
+                        gTimer.stop();
                         gReplayButton.render();
                         gMenuButton.render();
                         break;

@@ -52,7 +52,7 @@ bool loadMedia() {
         success = false;
     }
 
-    if (!gPlayButton.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - BUTTON_HEIGHT)/2 + 1, PLAYING)) {
+    if (!gPlayButton.defineButton("media/play.png", "media/play1.png", (SCREEN_WIDTH - BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - BUTTON_HEIGHT)/2 + 1, LEVEL_SELECT)) {
         cout << "Fail to define play button!" << endl;
         success = false;
     }
@@ -67,8 +67,19 @@ bool loadMedia() {
         success = false;
     }
 
+    gFont = TTF_OpenFont("media/ITCKRIST.TTF", 45);
+    if (gFont == NULL) {
+        cout << "Fail to load font! SDL_ttf Error: " << TTF_GetError() << endl;
+        success = false;
+    }
+    
+    if (!gLevelSelect.loadTexture()) {
+        cout << "Fail to load level select texture!" << endl;
+        success = false;
+    }
+    
     if (!gClickToContinue.loadFromFile("media/clickToContinue.png")) {
-        cout << "Fail to load lose prompt!" << endl;
+        cout << "Fail to load clickToContinue texture!" << endl;
         success = false;
     }
 
@@ -80,6 +91,8 @@ void close() {
     gPlayButton.free();
     gReplayButton.free();
     gMenuButton.free();
+    gClickToContinue.free();
+    gLevelSelect.free();
 
     SDL_DestroyWindow(gWindow);
     SDL_DestroyRenderer(gRenderer);
@@ -87,6 +100,7 @@ void close() {
     gRenderer = NULL;
 
     SDL_Quit();
+    TTF_Quit();
     IMG_Quit();
     Mix_Quit();
 }
@@ -94,6 +108,5 @@ void close() {
 void waitHalfSecond() {
     Uint32 startTick = SDL_GetTicks();
     while (SDL_GetTicks() - startTick < 500) {
-
     }
 }

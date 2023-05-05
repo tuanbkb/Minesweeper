@@ -76,6 +76,17 @@ bool Board::loadTexture() {
 }
 
 void Board::generateBoard() {
+    switch (gLevelSelect.getDifficulty()) {
+        case EASY:
+            NUM_OF_BOMB = 50;
+            break;
+        case MEDIUM:
+            NUM_OF_BOMB = 65;
+            break;
+        case HARD:
+            NUM_OF_BOMB = 80;
+            break;
+    }
     for (int i = 0; i < NUM_OF_ROW; i++) {
         for (int j = 0; j < NUM_OF_COL; j++) {
             gBoard[i][j] = 0;
