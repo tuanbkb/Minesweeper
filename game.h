@@ -22,6 +22,8 @@ extern Board gBoard;
 extern LButton gPlayButton;
 extern LButton gReplayButton;
 extern LButton gMenuButton;
+extern LButton gContinueButton;
+extern LButton gPauseButton;
 
 extern LevelSelect gLevelSelect;
 extern LTexture gClickToContinue;

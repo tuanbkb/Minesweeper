@@ -15,6 +15,7 @@ LButton gPlayButton;
 LButton gReplayButton;
 LButton gMenuButton;
 LButton gPauseButton;
+LButton gContinueButton;
 LTimer gTimer;
 LevelSelect gLevelSelect;
 
@@ -52,6 +53,11 @@ int main(int argc, char** args) {
                             break;
                         case PLAYING:
                             gBoard.handleEvent(e);
+                            gPauseButton.handleEvent(e);
+                            break;
+                        case PAUSING:
+                            gContinueButton.handleEvent(e);
+                            gMenuButton.handleEvent(e);
                             break;
                         case REVEAL_BOMB:
                             if (e.type == SDL_MOUSEBUTTONDOWN) gameState = END_SCREEN;
@@ -66,6 +72,7 @@ int main(int argc, char** args) {
 
                 switch (gameState) {
                     case MAIN_MENU:
+                        boardIsGenerated = false;
                         gPlayButton.render();
                         break;
                     case LEVEL_SELECT:
@@ -78,8 +85,10 @@ int main(int argc, char** args) {
                         }
                         else {
                             if (!gTimer.isStarted()) gTimer.start();
+                            else if (gTimer.isPaused()) gTimer.unpause();
                             gBoard.renderBoard();
                             gTimer.render();
+                            gPauseButton.render();
                         }
                         if (gBoard.getBombRemaining() == 0) {
                             waitHalfSecond();
@@ -92,6 +101,11 @@ int main(int argc, char** args) {
                             gTimer.pause();
                             boardIsGenerated = false;
                         }
+                        break;
+                    case PAUSING:
+                        if (!gTimer.isPaused()) gTimer.pause();
+                        gContinueButton.render();
+                        gMenuButton.render();
                         break;
                     case REVEAL_BOMB:
                         gBoard.revealBomb();

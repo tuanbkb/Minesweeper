@@ -83,6 +83,16 @@ bool loadMedia() {
         success = false;
     }
 
+    if (!gPauseButton.defineButton("media/pause.png", "media/pause1.png", SCREEN_WIDTH - SQUARE_BUTTON_SIZE - 15, 15, PAUSING)) {
+        cout << "Fail to define pause button" << endl;
+        success = false;
+    }
+
+    if (!gContinueButton.defineButton("media/continue.png", "media/continue1.png", (SCREEN_WIDTH - 3*LONG_BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - LONG_BUTTON_HEIGHT)/2 + 1, PLAYING)) {
+        cout << "Fail to define continue button" << endl;
+        success = false;
+    }
+
     return success;
 }
 
@@ -91,6 +101,8 @@ void close() {
     gPlayButton.free();
     gReplayButton.free();
     gMenuButton.free();
+    gContinueButton.free();
+    gPauseButton.free();
     gClickToContinue.free();
     gLevelSelect.free();
 

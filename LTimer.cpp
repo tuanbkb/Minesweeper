@@ -26,7 +26,7 @@ void LTimer::stop() {
 
 void LTimer::pause() {
     if (!mPaused && mStarted) {
-        mPauseTick = SDL_GetTicks64() - mStartTick;
+        mPauseTick = SDL_GetTicks() - mStartTick;
         mStartTick = 0;
 
         mPaused = true;
@@ -35,8 +35,8 @@ void LTimer::pause() {
 
 void LTimer::unpause() {
     if (mPaused && mStarted) {
+        mStartTick = SDL_GetTicks() - mPauseTick;
         mPauseTick = 0;
-        mStartTick = SDL_GetTicks64() - mPauseTick;
 
         mPaused = false;
     }
@@ -66,7 +66,7 @@ void LTimer::render() {
 }
 
 bool LTimer::isPaused() {
-    return mPaused;
+    return mPaused && mStarted;
 }
 
 bool LTimer::isStarted() {
