@@ -57,12 +57,16 @@ Uint32 LTimer::getTicks() {
     return time;
 }
 
-void LTimer::render() {
+void LTimer::render(int x, int y) {
     stringstream timeText;
     timeText << "Time: " << getTicks()/1000;
     if (mTimeTexture.loadFromRenderText(timeText.str().c_str(), TEXT_COLOR)) {
-        mTimeTexture.render((TOP_LEFT_BOARD_X - 1 - mTimeTexture.getWidth())/2, 250);
+        mTimeTexture.render(x, y);
     }
+}
+
+int LTimer::getTextureWidth() {
+    return mTimeTexture.getWidth();
 }
 
 bool LTimer::isPaused() {

@@ -36,6 +36,8 @@ class Board{
 
         int getBombRemaining();
 
+        bool checkFlagPlaced();
+
         bool bombActivated();
 
         void free(); 

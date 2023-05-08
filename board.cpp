@@ -78,7 +78,7 @@ bool Board::loadTexture() {
 void Board::generateBoard() {
     switch (gLevelSelect.getDifficulty()) {
         case EASY:
-            NUM_OF_BOMB = 50;
+            NUM_OF_BOMB = 5;
             break;
         case MEDIUM:
             NUM_OF_BOMB = 65;
@@ -285,6 +285,10 @@ void Board::handleEvent(SDL_Event& e) {
 
 int Board::getBombRemaining() {
     return bombRemaining;
+}
+
+bool Board::checkFlagPlaced() {
+    return flagPlaced == NUM_OF_BOMB;
 }
 
 bool Board::bombActivated() {
