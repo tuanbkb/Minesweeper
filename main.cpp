@@ -100,7 +100,7 @@ int main(int argc, char** args) {
                             gPauseButton.render();
                             gMusic.stopMusic();
                         }
-                        if (gBoard.getBombRemaining() == 0) {
+                        if (gBoard.getBombRemaining() == 0 && gBoard.checkFlagPlaced()) {
                             waitHalfSecond();
                             gameState = END_SCREEN;
                             gTimer.pause();
