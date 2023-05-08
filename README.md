@@ -37,12 +37,8 @@ Trò chơi sẽ kết thúc khi bạn đặt cờ ở tất cả các ô chứa 
 
 #### Một số hình ảnh trong game
 
-!(/example/Screenshot 2023-05-08 152838.png)
-
-!(/example/Screenshot 2023-05-08 152853.png)
-
-!(/example/Screenshot 2023-05-08 152939.png)
-
-!(/example/Screenshot 2023-05-08 153002.png)
-
-!(/example/Screenshot 2023-05-08 153015.png)
+![](/example/1.png)
+![](/example/2.png)
+![](/example/3.png)
+![](/example/4.png)
+![](/example/5.png)
