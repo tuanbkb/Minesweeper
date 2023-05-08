@@ -54,4 +54,10 @@ enum DIFFICULTY {
     HARD,
 };
 
+enum MUSIC_PLAYING {
+    MENU,
+    WIN,
+    LOSE,
+};
+
 #endif

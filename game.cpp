@@ -83,6 +83,21 @@ bool loadMedia() {
         success = false;
     }
 
+    if (!gTitleScreen.loadFromFile("media/title.png")) {
+        cout << "Fail to load title screen texture!" << endl;
+        success = false;
+    }
+
+    if (!gLoseScreen.loadFromFile("media/lose.png")) {
+        cout << "Fail to load lose screen texture!" << endl;
+        success = false;
+    }
+
+    if (!gWinScreen.loadFromFile("media/win.png")) {
+        cout << "Fail to load win screen texture!" << endl;
+        success = false;
+    }
+
     if (!gPauseButton.defineButton("media/pause.png", "media/pause1.png", SCREEN_WIDTH - SQUARE_BUTTON_SIZE - 15, 15, PAUSING)) {
         cout << "Fail to define pause button" << endl;
         success = false;
@@ -90,6 +105,11 @@ bool loadMedia() {
 
     if (!gContinueButton.defineButton("media/continue.png", "media/continue1.png", (SCREEN_WIDTH - 3*LONG_BUTTON_WIDTH)/2 + 1, (SCREEN_HEIGHT - LONG_BUTTON_HEIGHT)/2 + 1, PLAYING)) {
         cout << "Fail to define continue button" << endl;
+        success = false;
+    }
+
+    if (!gMusic.loadMusic()) {
+        cout << "Fail to load music!" << endl;
         success = false;
     }
 
@@ -104,7 +124,12 @@ void close() {
     gContinueButton.free();
     gPauseButton.free();
     gClickToContinue.free();
+    gTitleScreen.free();
+    gWinScreen.free();
+    gLoseScreen.free();
     gLevelSelect.free();
+
+    gMusic.free();
 
     SDL_DestroyWindow(gWindow);
     SDL_DestroyRenderer(gRenderer);

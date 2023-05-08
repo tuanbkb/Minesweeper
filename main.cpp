@@ -3,6 +3,7 @@
 #include "LButton.h"
 #include "LTimer.h"
 #include "LevelSelect.h"
+#include "LMusic.h"
 
 SDL_Window* gWindow = NULL;
 
@@ -20,6 +21,11 @@ LTimer gTimer;
 LevelSelect gLevelSelect;
 
 LTexture gClickToContinue;
+LTexture gTitleScreen;
+LTexture gLoseScreen;
+LTexture gWinScreen;
+
+LMusic gMusic;
 
 int gameState = MAIN_MENU;
 
@@ -73,7 +79,10 @@ int main(int argc, char** args) {
                 switch (gameState) {
                     case MAIN_MENU:
                         boardIsGenerated = false;
+                        if (gTimer.isStarted()) gTimer.stop();
+                        gTitleScreen.render(0, 0);
                         gPlayButton.render();
+                        gMusic.playOpeningTheme();
                         break;
                     case LEVEL_SELECT:
                         gLevelSelect.renderLevelSelectScreen();
@@ -89,6 +98,7 @@ int main(int argc, char** args) {
                             gBoard.renderBoard();
                             gTimer.render();
                             gPauseButton.render();
+                            gMusic.stopMusic();
                         }
                         if (gBoard.getBombRemaining() == 0) {
                             waitHalfSecond();
@@ -114,6 +124,8 @@ int main(int argc, char** args) {
                         break;
                     case END_SCREEN:
                         gTimer.stop();
+                        if (gBoard.bombActivated()) {gLoseScreen.render(0, 0); gMusic.playLoseTheme();}
+                        else {gWinScreen.render(0, 0); gMusic.playWinTheme();}
                         gReplayButton.render();
                         gMenuButton.render();
                         break;

@@ -199,6 +199,7 @@ void Board::placeFlag(int row, int col) {
         gBoardShown[row][col] = -1;
         flagPlaced++;
         if (gBoard[row][col] == -1) bombRemaining--;
+        gMusic.playFlagEffect();
     }
     else if (gBoardShown[row][col] == -1) {
         gBoardShown[row][col] = 0;
@@ -268,7 +269,13 @@ void Board::handleEvent(SDL_Event& e) {
         int row = (y - TOP_LEFT_BOARD_Y + 1)/CELL_SIZE;
         int col = (x - TOP_LEFT_BOARD_X + 1)/CELL_SIZE;
         if (e.button.button == SDL_BUTTON_LEFT) {
-            if (row >= 0 && row < NUM_OF_ROW && col >= 0 && col < NUM_OF_COL) openCell(row, col);
+            if (row >= 0 && row < NUM_OF_ROW && col >= 0 && col < NUM_OF_COL) {
+                if (gBoardShown[row][col] == NORMAL) {
+                    if (gBoard[row][col] != -1) gMusic.playOpenCellEffect();
+                    else gMusic.playBombEffect();
+                }
+                openCell(row, col);
+            }
         }
         else if (e.button.button == SDL_BUTTON_RIGHT) {
             if (row >= 0 && row < NUM_OF_ROW && col >= 0 && col < NUM_OF_COL) placeFlag(row, col);

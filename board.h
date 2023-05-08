@@ -5,10 +5,12 @@
 #include "constant.h"
 #include "LTexture.h"
 #include "LevelSelect.h"
+#include "LMusic.h"
 
 #include <sstream>
 
 extern LevelSelect gLevelSelect;
+extern LMusic gMusic;
 
 class Board{
     public:

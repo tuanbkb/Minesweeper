@@ -27,6 +27,9 @@ extern LButton gPauseButton;
 
 extern LevelSelect gLevelSelect;
 extern LTexture gClickToContinue;
+extern LTexture gTitleScreen;
+extern LTexture gLoseScreen;
+extern LTexture gWinScreen;
 
 bool init();
 
