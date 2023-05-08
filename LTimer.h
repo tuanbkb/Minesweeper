@@ -18,8 +18,9 @@ class LTimer {
 
         Uint32 getTicks();
 
-        void render();
+        void render(int x, int y);
 
+        int getTextureWidth();
         bool isStarted();
         bool isPaused();
     private:

@@ -78,7 +78,7 @@ bool Board::loadTexture() {
 void Board::generateBoard() {
     switch (gLevelSelect.getDifficulty()) {
         case EASY:
-            NUM_OF_BOMB = 50;
+            NUM_OF_BOMB = 5;
             break;
         case MEDIUM:
             NUM_OF_BOMB = 65;

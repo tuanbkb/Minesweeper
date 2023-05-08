@@ -91,12 +91,13 @@ int main(int argc, char** args) {
                         if (!boardIsGenerated) {
                             gBoard.generateBoard();
                             boardIsGenerated = true;
+                            gTimer.stop();
                         }
                         else {
                             if (!gTimer.isStarted()) gTimer.start();
                             else if (gTimer.isPaused()) gTimer.unpause();
                             gBoard.renderBoard();
-                            gTimer.render();
+                            gTimer.render((TOP_LEFT_BOARD_X - 1 - gTimer.getTextureWidth())/2, 250);
                             gPauseButton.render();
                             gMusic.stopMusic();
                         }
@@ -120,12 +121,11 @@ int main(int argc, char** args) {
                     case REVEAL_BOMB:
                         gBoard.revealBomb();
                         gClickToContinue.render(SCREEN_WIDTH - gClickToContinue.getWidth(), (SCREEN_HEIGHT - gClickToContinue.getHeight())/2);
-                        gTimer.render();
+                        gTimer.render((TOP_LEFT_BOARD_X - 1 - gTimer.getTextureWidth())/2, 250);
                         break;
                     case END_SCREEN:
-                        gTimer.stop();
                         if (gBoard.bombActivated()) {gLoseScreen.render(0, 0); gMusic.playLoseTheme();}
-                        else {gWinScreen.render(0, 0); gMusic.playWinTheme();}
+                        else {gWinScreen.render(0, 0); gMusic.playWinTheme(); gTimer.render((SCREEN_WIDTH - gTimer.getTextureWidth())/2, 220);}
                         gReplayButton.render();
                         gMenuButton.render();
                         break;
