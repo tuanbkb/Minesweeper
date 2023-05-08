@@ -15,13 +15,13 @@ Tên game: Minesweeper
 
 ### Cách tải và chạy code nguồn trên máy
 
-#### Đối với Windows
-
 Đảm bảo máy của các bạn đã được cài compiler g++ của MinGW. Nếu chưa cài đặt, các bạn có thể tham khảo video sau để cài compiler g++:
     https://www.youtube.com/watch?v=sXW2VLrQ3Bs
 
 Sau đó các bạn mở terminal trong thư mục mã nguồn và chạy Makefile, sau đó chạy file Minesweeper.exe vừa tạo ra để chơi game
 > Tùy thuộc vào cách bạn cài compiler, câu lệnh chạy Makefile có thể là 'make' hoặc 'mingw32-make'
+
+Nếu chỉ muốn chơi game, các bạn chỉ cần ấn vào file Minesweeper.exe đã có sẵn
 
 ### Chi tiết trò chơi
 
