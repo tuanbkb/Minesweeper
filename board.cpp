@@ -287,6 +287,10 @@ int Board::getBombRemaining() {
     return bombRemaining;
 }
 
+bool Board::checkFlagPlaced() {
+    return flagPlaced == NUM_OF_BOMB;
+}
+
 bool Board::bombActivated() {
     return bombIsActivated;
 }
