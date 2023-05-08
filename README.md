@@ -36,3 +36,9 @@ Trò chơi bao gồm một bảng 20x20 ô, trong đó có một số ô có ch�
 Trò chơi sẽ kết thúc khi bạn đặt cờ ở tất cả các ô chứa bomb hoặc khi bạn nhấn vào ô chứa bomb.
 
 #### Một số hình ảnh trong game
+
+(./example/Screenshot 2023-05-08 152838.png)
+(./example/Screenshot 2023-05-08 152853.png)
+(./example/Screenshot 2023-05-08 152939.png)
+(./example/Screenshot 2023-05-08 153002.png)
+(./example/Screenshot 2023-05-08 153015.png)
