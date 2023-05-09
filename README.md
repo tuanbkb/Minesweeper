@@ -21,8 +21,6 @@ Tên game: Minesweeper
 Sau đó các bạn mở terminal trong thư mục mã nguồn và chạy Makefile, sau đó chạy file Minesweeper.exe vừa tạo ra để chơi game
 > Tùy thuộc vào cách bạn cài compiler, câu lệnh chạy Makefile có thể là 'make' hoặc 'mingw32-make'
 
-Nếu chỉ muốn chơi game, các bạn chỉ cần ấn vào file Minesweeper.exe đã có sẵn
-
 ### Chi tiết trò chơi
 
 Trò chơi được lấy ý tưởng và cảm hứng từ game Minesweeper vốn đã rất quen thuộc với chúng ta trên hệ điều hành Windows từ xưa (Windows 95, Windows XP). Phần lớn các đoạn mã nguồn là do tôi tự viết, ngoài ra một số đoạn mã nguồn được học từ trang web: https://lazyfoo.net/tutorials/SDL
